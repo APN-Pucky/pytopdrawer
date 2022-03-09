@@ -1,0 +1,11 @@
+__pycache__
+.pypirc
+dist/
+build/
+smpl.egg-info/
+.eggs/
+*.pyc
+.ipynb_checkpoints
+.coverage
+coverage.xml
+source/example/**/*.py
