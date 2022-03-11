@@ -10,7 +10,7 @@ def read(topfile,powheg=True):
 	cur = TopPlot()
 	cur_data = []
 	lim = re.compile('set\s+limits\s+x\s+([0-9\.E\+-]+)\s+([0-9\.E\+-]+)\s+y\s+([0-9\.E\+-]+)\s+([0-9\.E\+-]+)')
-	title = re.compile('title\s+(\w+)\s+"(\w*)"')
+	title = re.compile('title\s+(\w+)\s+"(.*)"')
 	data = re.compile('([0-9\.Ee\+-]+)\s+([0-9\.Ee\+-]+)')
 	join = re.compile('join')
 	newplot = re.compile('newplot')
@@ -44,8 +44,6 @@ def read(topfile,powheg=True):
 					cur.joins.append(Join(0,0,0,1))
 					cur._doskip(1)
 				topplots.append(copy.deepcopy(cur))
-				print(cur.data)
-				print("newline")
 				cur_data = []
 				cur = TopPlot()
 	return topplots

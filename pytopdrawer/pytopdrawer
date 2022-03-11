@@ -1,19 +1,14 @@
 #!/usr/bin/python3
 import argparse
-import autoctf
-from autoctf import auto_check_flag,set_flag_regex
-from autoctf.args import set_stop
+import pytopdrawer
 
 
 def __main__():
 	parser = argparse.ArgumentParser()
-	parser.add_argument("challenge", type=str,help="url/file/string")
-	parser.add_argument("-f","--flag", type=str,help="regex to detect the flag",default=b"flag{[^{}]*}")
-	parser.add_argument("--files", type=list,help="files possibly containing flags",default=["flag","flag.php","flag.html"])
-	parser.add_argument("--stop", type=bool,help="stop at first flag found",default=False)
+	parser.add_argument("topfile", type=str,help="url/file/string")
 	args = parser.parse_args()
-	set_flag_regex(str.encode(args.flag))
-	set_stop(args.stop)
-	auto_check_flag(args.challenge)
+	tops = pytopdrawer.read(args.topfile)
+	for t in tops:
+		t.show()
 
 __main__()

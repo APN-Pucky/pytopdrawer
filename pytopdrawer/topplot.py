@@ -47,10 +47,14 @@ class TopPlot:
 	def ydata(self):
 		return self.data[:,1]
 
-	def show(self):
-		plot.data(self.xdata(),self.ydata() ,fmt="-",grid=False)
-		for join in tqdm(self.joins):
+	def plot(self,**kwargs):
+		plot.data(self.xdata(),self.ydata() ,fmt="-",grid=False,**kwargs)
+		plot.title(self.title.text)
+		for join in self.joins:
 			plot.plot(*join.as_arrays(),color='k',alpha=0.3,linewidth=0.5)
+	
+	def show(self,**kwargs):
+		self.plot(init=True,**kwargs)
 		plot.show()
 
 
