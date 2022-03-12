@@ -47,14 +47,23 @@ class TopPlot:
 	def ydata(self):
 		return self.data[:,1]
 
-	def plot(self,**kwargs):
-		plot.data(self.xdata(),self.ydata() ,fmt="-",grid=False,**kwargs)
-		plot.title(self.title.text)
+	def grid(self,gridcolor="k",gridalpha=0.3,gridlinewidth=0.5,**kwargs):
 		for join in self.joins:
-			plot.plot(*join.as_arrays(),color='k',alpha=0.3,linewidth=0.5)
+			plot.plot(*join.as_arrays(),color=gridcolor,alpha=gridalpha,linewidth=gridlinewidth)
 	
-	def show(self,**kwargs):
-		self.plot(init=True,**kwargs)
+
+	def fit(self,f,fmt="-",grid=False,**kwargs):
+		plot.fit(self.xdata(),self.ydata() ,f,fmt=fmt,grid=grid,**kwargs)
+		plot.title(self.title.text)
+		self.grid(**kwargs)
+
+	def plot(self,fmt="-",grid=False,**kwargs):
+		plot.data(self.xdata(),self.ydata() ,fmt=fmt,grid=grid,**kwargs)
+		plot.title(self.title.text)
+		self.grid(**kwargs)
+
+	def show(self,init=True,**kwargs):
+		self.plot(init=init,**kwargs)
 		plot.show()
 
 
