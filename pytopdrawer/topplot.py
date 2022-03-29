@@ -49,8 +49,13 @@ class TopPlot:
 
 	def grid(self,gridcolor="k",gridalpha=0.3,gridlinewidth=0.5,**kwargs):
 		for join in self.joins:
+			# print(join.x1,join.x2)
 			plot.plot(*join.as_arrays(),color=gridcolor,alpha=gridalpha,linewidth=gridlinewidth)
 	
+	def auto(self,fmt="-",grid=False,**kwargs):
+		plot.auto(self.xdata(),self.ydata() ,fmt=fmt,grid=grid,**kwargs)
+		plot.title(self.title.text)
+		self.grid(**kwargs)
 
 	def fit(self,f,fmt="-",grid=False,**kwargs):
 		plot.fit(self.xdata(),self.ydata() ,f,fmt=fmt,grid=grid,**kwargs)
