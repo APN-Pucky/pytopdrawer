@@ -51,8 +51,8 @@ class TopPlot:
 		for join in self.joins:
 			plot.plot(*join.as_arrays(),color=gridcolor,alpha=gridalpha,linewidth=gridlinewidth)
 	
-	def auto(self,f,fmt="-",grid=False,**kwargs):
-		plot.auto(self.xdata(),self.ydata() ,f,fmt=fmt,grid=grid,**kwargs)
+	def auto(self,fmt="-",grid=False,**kwargs):
+		plot.auto(self.xdata(),self.ydata() ,fmt=fmt,grid=grid,**kwargs)
 		plot.title(self.title.text)
 		self.grid(**kwargs)
 
