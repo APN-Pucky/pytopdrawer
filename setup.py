@@ -17,7 +17,7 @@ setuptools.setup(
     setup_requires=['setuptools-git-versioning'],
     author="APN",
     author_email="APN-Pucky@no-reply.github.com",
-    description="auto solve simple ctfs",
+    description="draw top files in matplotlib/smpl",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/APN-Pucky/pytopdrawer",
