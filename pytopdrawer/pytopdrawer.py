@@ -3,7 +3,7 @@ import argparse
 import pytopdrawer
 
 
-def __main__():
+def main():
 	parser = argparse.ArgumentParser()
 	parser.add_argument("topfile", type=str,help="url/file/string")
 	parser.add_argument("-p", "--powheg", action="store_true",help="add powheg lines")
@@ -13,4 +13,4 @@ def __main__():
 	for t in tops:
 		t.show()
 
-__main__()
+main()

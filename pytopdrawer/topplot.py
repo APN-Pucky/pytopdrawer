@@ -1,7 +1,5 @@
-from unittest import skip
 import numpy as np
 from smpl import plot
-from tqdm import tqdm
 
 
 class Title:
