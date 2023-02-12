@@ -12,7 +12,7 @@ smpl = "*"
 uncertainties = "*"
 
 [tool.poetry.scripts]
-hepi-fast = "pytopdrawer.pytopdrawer:main"
+pytopdrawer = "pytopdrawer.pytopdrawer:main"
 
 
 [tool.poetry.group.dev]
