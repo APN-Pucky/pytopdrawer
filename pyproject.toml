@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "pytopdrawer"
-version = "0.0.1"
+version = "0.0.5.2"
 description = "Plot top files with python and matplotlib (mainly from POWHEG)"
 authors = ["Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>"]
 readme = "README.md"
 repository = "https://github.com/APN-Pucky/pytopdrawer"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.8"
 smpl = "*"
 uncertainties = "*"
 
@@ -28,7 +28,7 @@ requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
 build-backend = "poetry_dynamic_versioning.backend"
 
 [tool.poetry-dynamic-versioning]
-enable = true
+enable = false
 vcs = "git"
 style = "pep440"
 dirty = true
