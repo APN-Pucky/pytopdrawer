@@ -9,8 +9,8 @@ def main():
 	#parser.add_argument("-p", "--powheg", action="store_true",help="add powheg lines")
 	parser.add_argument("-m","--mcfm", action="store_true",help="add mcfm lines")
 	args = parser.parse_args()
-	tops = pytopdrawer.read(args.topfile,!args.mcfm,args.mcfm)
+	tops = pytopdrawer.read(args.topfile,not args.mcfm,args.mcfm)
 	for t in tops:
 		t.show()
 
-main()
+#main()

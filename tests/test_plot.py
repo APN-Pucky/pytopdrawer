@@ -1,10 +1,10 @@
 import pytopdrawer
 
 def test_read():
-	pytopdrawer.read("test.top")
+	pytopdrawer.read("tests/test.top")
 
 def test_read_show():
-	tps = pytopdrawer.read("test.top")
+	tps = pytopdrawer.read("tests/test.top")
 	for tp in tps:
 		print(tp.title.text)
 		tp.show()
