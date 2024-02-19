@@ -9,7 +9,6 @@ from smpl import plot
 import pandas as pd
 import matplotlib.pyplot as plt
 from uncertainties import unumpy
-import yoda
 
 def read(topfile,powheg=True,mcfm=False):
 	if powheg:
