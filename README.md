@@ -1,7 +1,7 @@
 # pytopdrawer
 
 
-[![PyPI version][pypi image]][pypi link] [![PyPI version][pypi versions]][pypi link]  ![downloads](https://img.shields.io/pypi/dm/smpl.svg)
+[![PyPI version][pypi image]][pypi link] [![PyPI version][pypi versions]][pypi link]  ![downloads](https://img.shields.io/pypi/dm/pytopdrawer.svg)
 
 This project plots .top files (primarily from powheg, but also mcfm `[-m]`).
 
