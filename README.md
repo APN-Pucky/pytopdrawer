@@ -7,7 +7,7 @@ This project plots .top files (primarily from powheg, but also mcfm `[-m]`).
 
 ```
 $ pip install pytopdrawer
-$ pytopdraw -p pwg-btl.top
+$ pytopdrawer pwg-btl.top
 ```
 
 [pypi image]: https://badge.fury.io/py/pytopdrawer.svg
