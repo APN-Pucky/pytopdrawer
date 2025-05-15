@@ -5,6 +5,7 @@ description = "Plot top files with python and matplotlib (mainly from POWHEG)"
 authors = ["Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>"]
 readme = "README.md"
 repository = "https://github.com/APN-Pucky/pytopdrawer"
+license = "GPL-3.0-or-later"
 
 [tool.poetry.dependencies]
 python = "^3.8"
