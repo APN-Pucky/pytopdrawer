@@ -23,7 +23,7 @@ def read_mcfm(topdir,mcfm=True,draw=False):
 	for topfile in glob.glob(topdir + '/*.txt'):
 		if not "TeV_" in topfile:
 			continue
-		df = pd.read_csv(topfile,sep='\s+',skiprows=5,header=None)
+		df = pd.read_csv(topfile,sep=r'\s+',skiprows=5,header=None)
 		df.columns = ['xlow','xhigh','sumw','sumw2sq']
 		# 1000 to pb and divide by bin width
 		df["sumw"] = df["sumw"]/1000
@@ -52,10 +52,10 @@ def read_powheg(topfile,powheg=True):
 	topplots = []
 	cur = TopPlot()
 	cur_data = []
-	lim = re.compile('set\s+limits\s+x\s+([0-9\.E\+-]+)\s+([0-9\.E\+-]+)\s+y\s+([0-9\.E\+-]+)\s+([0-9\.E\+-]+)')
-	title = re.compile('title\s+(\w+)\s+"(.*)"')
-	data = re.compile('([0-9\.Ee\+-]+)\s+([0-9\.Ee\+-]+)')
-	join = re.compile('join')
+	lim = re.compile(r'set\s+limits\s+x\s+([0-9\.E\+-]+)\s+([0-9\.E\+-]+)\s+y\s+([0-9\.E\+-]+)\s+([0-9\.E\+-]+)')
+	title = re.compile(r'title\s+(\w+)\s+"(.*)"')
+	data = re.compile(r'([0-9\.Ee\+-]+)\s+([0-9\.Ee\+-]+)')
+	join = re.compile(r'join')
 	newplot = re.compile('newplot')
 	with open(topfile) as topo_file:
 		for line in topo_file:

@@ -45,10 +45,12 @@ class TopPlot:
 	def ydata(self):
 		return self.data[:,1]
 
-	def grid(self,gridcolor="k",gridalpha=0.3,gridlinewidth=0.5,**kwargs):
+	def grid(self,gridcolor="k",gridalpha=0.3,gridlinewidth=0.5,axes=None,**kwargs):
+		if axes is None:
+			axes = plot.gca()
 		for join in self.joins:
 			# print(join.x1,join.x2)
-			plot.plot(*join.as_arrays(),color=gridcolor,alpha=gridalpha,linewidth=gridlinewidth)
+			axes.plot(*join.as_arrays(),color=gridcolor,alpha=gridalpha,linewidth=gridlinewidth)
 	
 	def auto(self,fmt="-",grid=False,**kwargs):
 		plot.auto(self.xdata(),self.ydata() ,fmt=fmt,grid=grid,**kwargs)
