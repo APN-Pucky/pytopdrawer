@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import argparse
-from itertools import chain
 import math
 import pytopdrawer
 import matplotlib.pyplot as plt
@@ -28,8 +27,18 @@ def main():
 		rows = N
 		cols = 1
 	fig, axes = plt.subplots(rows,cols,  figsize=( cols*args.size,rows*args.size))
-	for t,a in zip(tops,list(chain.from_iterable(axes))):
-		t.plot(axes=a)
+	ti = 0
+	for i in range(rows):
+		for j in range(cols):
+			if rows == 1:
+				a = axes[j]
+			elif cols == 1:
+				a = axes[i]
+			else:
+				a = axes[i][j]	
+			tops[ti].plot(axes=a)
+			ti += 1
+
 	if not args.noshow:
 		plt.show()
 	if args.output is not None:
