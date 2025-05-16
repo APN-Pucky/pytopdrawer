@@ -38,6 +38,8 @@ def main():
 				a = axes[i][j]	
 			tops[ti].plot(axes=a)
 			ti += 1
+			if ti == N:
+				break
 
 	if not args.noshow:
 		plt.show()
