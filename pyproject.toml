@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pytopdrawer"
-version = "0.0.0"
+version = "0.0.9"
 description = "Plot top files with python and matplotlib (mainly from POWHEG)"
 authors = ["Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>"]
 readme = "README.md"

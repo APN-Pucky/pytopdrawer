@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.9] - 2025-05-16
+
+### Fixed
+
+- Fix index out of bounds on non squared N input plots in topfile
+
 ## [0.0.8] - 2025-05-15
 
 ### Added
