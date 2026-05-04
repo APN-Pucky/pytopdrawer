@@ -10,6 +10,8 @@ $ pip install pytopdrawer
 $ pytopdrawer pwg-btl.top
 ```
 
+For more advanced Notebook examples on how to use the top plots of this package see the examples folder of pypowhegparse](https://github.com/APN-Pucky/pypowhegparse).
+
 [pypi image]: https://badge.fury.io/py/pytopdrawer.svg
 [pypi link]: https://pypi.org/project/pytopdrawer/
 [pypi versions]: https://img.shields.io/pypi/pyversions/pytopdrawer.svg
