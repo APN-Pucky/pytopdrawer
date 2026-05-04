@@ -40,8 +40,8 @@ def main():
 			ti += 1
 			if ti == N:
 				break
-
+	if args.output is not None:
+		fig.savefig(args.output)
 	if not args.noshow:
 		plt.show()
-	if args.output is not None:
-		plt.savefig(args.output)
+
