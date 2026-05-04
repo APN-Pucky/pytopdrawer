@@ -45,29 +45,29 @@ class TopPlot:
 	def ydata(self):
 		return self.data[:,1]
 
-	def grid(self,gridcolor="k",gridalpha=0.3,gridlinewidth=0.5,axes=None,**kwargs):
+	def grid(self, gridcolor="k", gridalpha=0.3, gridlinewidth=0.5, axes=None, **kwargs):
 		if axes is None:
 			axes = plot.gca()
 		for join in self.joins:
 			# print(join.x1,join.x2)
 			axes.plot(*join.as_arrays(),color=gridcolor,alpha=gridalpha,linewidth=gridlinewidth)
 	
-	def auto(self,fmt="-",grid=False,**kwargs):
-		plot.auto(self.xdata(),self.ydata() ,fmt=fmt,grid=grid,**kwargs)
-		plot.title(self.title.text)
+	def auto(self, fmt="-", grid=False, title=None, **kwargs):
+		title = title if title is not None else self.title.text
+		plot.auto(self.xdata(), self.ydata(), fmt=fmt, grid=grid, title=title, **kwargs)
 		self.grid(**kwargs)
 
-	def fit(self,f,fmt="-",grid=False,**kwargs):
-		plot.fit(self.xdata(),self.ydata() ,f,fmt=fmt,grid=grid,**kwargs)
-		plot.title(self.title.text)
+	def fit(self, f, fmt="-", grid=False, title=None, **kwargs):
+		title = title if title is not None else self.title.text
+		plot.fit(self.xdata(), self.ydata(), f, fmt=fmt, grid=grid, title=title, **kwargs)
 		self.grid(**kwargs)
 
-	def plot(self,fmt="-",grid=False,**kwargs):
-		plot.data(self.xdata(),self.ydata() ,fmt=fmt,grid=grid,**kwargs)
-		plot.title(self.title.text)
+	def plot(self, fmt="-", grid=False, title=None, **kwargs):
+		title = title if title is not None else self.title.text
+		plot.data(self.xdata(), self.ydata(), fmt=fmt, grid=grid, title=title, **kwargs)
 		self.grid(**kwargs)
 
-	def show(self,init=True,**kwargs):
+	def show(self, init=True, **kwargs):
 		self.plot(init=init,**kwargs)
 		plot.show()
 
