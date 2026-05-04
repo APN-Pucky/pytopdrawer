@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.10] - 2026-05-04
+
+### Fixed
+
+- Fix order of show and show and savfig. Thanks to JCK.
+
+### Removed
+
+- All MCFM support was removed as out of scope for now.
+- Python 3.8 and 3.9 are no longer supported.
+
 ## [0.0.9] - 2025-05-16
 
 ### Fixed
