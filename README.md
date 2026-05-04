@@ -3,9 +3,9 @@
 
 [![PyPI version][pypi image]][pypi link] [![PyPI version][pypi versions]][pypi link]  ![downloads](https://img.shields.io/pypi/dm/pytopdrawer.svg)
 
-This project plots .top files (primarily from powheg, but also mcfm `[-m]`).
+This project plots .top files (primarily from POWHEG-BOX).
 
-```
+```bash
 $ pip install pytopdrawer
 $ pytopdrawer pwg-btl.top
 ```
