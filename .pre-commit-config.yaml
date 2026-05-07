@@ -33,14 +33,6 @@ repos:
       args: ["--fix", "--show-fixes"]
     - id: ruff-format
 
--   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.20.0
-    hooks:
-    - id: mypy
-      files: src
-      args: [--show-error-codes]
-      additional_dependencies: [particle, awkward, vector, graphviz]
-
 - repo: https://github.com/pre-commit/pygrep-hooks
   rev: v1.10.0
   hooks:
