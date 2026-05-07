@@ -7,11 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.11] - 2026-05-07
+
+### Added
+
+- Add text formatted output to topplots
+
 ## [0.0.10] - 2026-05-04
 
 ### Fixed
 
-- Fix order of show and show and savfig. Thanks to JCK.
+- Fix order of show and show and savefig. Thanks to JCK.
 
 ### Removed
 
@@ -32,4 +38,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add more command line parameters
 
 ## [0.0.7] - 2024-02-19
-
