@@ -13,6 +13,7 @@ def main():
 	parser.add_argument("-v", "--vertical", action="store_true",help="vertical layout")
 	parser.add_argument("-s", "--size", type=int,help="size of the plot", default=4)
 	parser.add_argument("-o", "--output", help="output file", type=str, default=None)
+	parser.add_argument("-t", "--text", action="store_true", help="print plots as text to stdout")
 	args = parser.parse_args()
 	tops = pytopdrawer.read(args.topfile, True, False)
 	N = len(tops)
@@ -38,6 +39,10 @@ def main():
 			ti += 1
 			if ti == N:
 				break
+	if args.text:
+		for top in tops:
+			print(top)
+		return
 	if args.output is not None:
 		fig.savefig(args.output)
 	if not args.noshow:
