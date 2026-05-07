@@ -96,7 +96,9 @@ class TopPlot:
 		return self.terminal_plot_str()
 
 	def __repr__(self):
-		return self.terminal_plot_str()
+		title = self.title.text if self.title is not None else ""
+		point_count = len(self.data) if self.data is not None else 0
+		return f"TopPlot(title={title!r}, point_count={point_count})"
 
 
 
