@@ -1,4 +1,5 @@
 import numpy as np
+import plotext as plt
 from smpl import plot
 
 
@@ -70,6 +71,34 @@ class TopPlot:
 	def show(self, init=True, **kwargs):
 		self.plot(init=init,**kwargs)
 		plot.show()
+
+	def terminal_plot(self, title=None, width=None, height=None):
+		title = title if title is not None else self.title.text
+		plt.clf()
+		plt.scatter(self.xdata().tolist(), self.ydata().tolist())
+		if title:
+			plt.title(title)
+		if width is not None or height is not None:
+			plt.plotsize(width, height)
+		plt.show()
+
+	def terminal_plot_str(self, title=None, width=None, height=None):
+		title = title if title is not None else self.title.text
+		plt.clf()
+		plt.scatter(self.xdata().tolist(), self.ydata().tolist())
+		if title:
+			plt.title(title)
+		if width is not None or height is not None:
+			plt.plotsize(width, height)
+		return plt.build()
+
+	def __str__(self):
+		return self.terminal_plot_str()
+
+	def __repr__(self):
+		title = self.title.text if self.title is not None else ""
+		point_count = len(self.data) if self.data is not None else 0
+		return f"TopPlot(title={title!r}, point_count={point_count})"
 
 
 

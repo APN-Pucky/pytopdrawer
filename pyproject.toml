@@ -11,6 +11,7 @@ license = "GPL-3.0-or-later"
 python = "^3.10"
 smpl = "*"
 uncertainties = "*"
+plotext = "*"
 
 [tool.poetry.scripts]
 pytopdrawer = "pytopdrawer.pytopdrawer:main"
@@ -45,4 +46,3 @@ addopts = [ "-v" ,"--cov=pytest" ,"--cov-config=.coveragerc" ,"--cov-append" ,"-
 filterwarnings = [
     'ignore: pkg_resources is deprecated as an API:DeprecationWarning'
 ]
-
