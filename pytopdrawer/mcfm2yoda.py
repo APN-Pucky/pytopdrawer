@@ -3,7 +3,7 @@ import glob
 import pandas as pd
 
 def mcfm_txt_file_to_yoda(txtdir: str, output: str = "mcfm.yoda") -> None:
-    if 
+    if
     for txtfile in glob.glob(txtdir + '/*.txt'):
         if not "TeV_" in txtfile:
             #raise ValueError("Input file must contain 'TeV_' in its name")
@@ -11,7 +11,7 @@ def mcfm_txt_file_to_yoda(txtdir: str, output: str = "mcfm.yoda") -> None:
 
         group = txtfile.replace('.txt','').split('TeV_')[0]
         type = txtfile.replace('.txt','').split('TeV_')[-1]
-    
+
         df = pd.read_csv(txtfile,sep=r'\s+',skiprows=5,header=None)
         df.columns = ['xlow','xhigh','sumw','sumw2sq']
         # 1000 to pb and divide by bin width
