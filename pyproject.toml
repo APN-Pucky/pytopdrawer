@@ -15,6 +15,7 @@ plotext = "*"
 
 [tool.poetry.scripts]
 pytopdrawer = "pytopdrawer.pytopdrawer:main"
+mcfm2yoda = "pytopdrawer.mcfm2yoda:main"
 
 
 [tool.poetry.group.dev]
