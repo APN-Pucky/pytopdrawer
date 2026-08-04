@@ -4,7 +4,7 @@ import os
 import pandas as pd
 
 
-def mcfm_txt_file_to_yoda(txtdir: str, output: str = "mcfm.yoda") -> None:
+def mcfm_txt_file_to_yoda(txtdir: str, output: str = "mcfm.yoda", weight=None) -> None:
     if os.path.exists(output):
         os.remove(output)
     for txtfile in glob.glob(txtdir + "/*.txt"):
@@ -15,6 +15,9 @@ def mcfm_txt_file_to_yoda(txtdir: str, output: str = "mcfm.yoda") -> None:
         basename = os.path.basename(txtfile).replace(".txt", "")
         group = basename.split("TeV_")[0]
         type = basename.split("TeV_")[-1]
+        wt = ""
+        if weight is not None:
+            wt = f"[{weight}]"
 
         underflow = 0.0
         overflow = 0.0
@@ -43,12 +46,13 @@ def mcfm_txt_file_to_yoda(txtdir: str, output: str = "mcfm.yoda") -> None:
         df["sumw2"] = df["sumw2sq"] ** 2
         df["sumwx"] = 0.0
         df["sumwx2"] = 0.0
-        df["nentries"] = 0.0
+        df["nentries"] = 1.0
 
         with open(output, "a") as f:
             f.write(
                 f"BEGIN YODA_HISTO1D_V2 /{group}/"
                 + type
+                + wt
                 + f"\nPath: /{group}/"
                 + type
                 + "\nTitle: \n"
@@ -90,6 +94,12 @@ def main():
         default="mcfm.yoda",
         help="Output YODA file name (default: mcfm.yoda)",
     )
+    parser.add_argument(
+        "--weight",
+        type=str,
+        default=None,
+        help="Weight to append to the type in the YODA file (default: None)",
+    )
     args = parser.parse_args()
 
-    mcfm_txt_file_to_yoda(args.txtdir, args.output)
+    mcfm_txt_file_to_yoda(args.txtdir, args.output, weight=args.weight)
