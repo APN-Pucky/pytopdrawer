@@ -2503,20 +2503,23 @@ files = [
 
 [[package]]
 name = "plotext"
-version = "5.3.2"
+version = "6.0.0"
 description = "plotext plots directly on terminal"
 optional = false
-python-versions = ">=3.5"
+python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "plotext-5.3.2-py3-none-any.whl", hash = "sha256:394362349c1ddbf319548cfac17ca65e6d5dfc03200c40dfdc0503b3e95a2283"},
-    {file = "plotext-5.3.2.tar.gz", hash = "sha256:52d1e932e67c177bf357a3f0fe6ce14d1a96f7f7d5679d7b455b929df517068e"},
+    {file = "plotext-6.0.0-py3-none-macosx_10_13_x86_64.whl", hash = "sha256:bbaf4f91fc8d703b98ad8046c52312024cf307b7bf29ebb881eac5c6ea32787e"},
+    {file = "plotext-6.0.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:ce03f64e15bc7fceebccf0a8c40135ad99c01e56802716bbaee2e99eac51b042"},
+    {file = "plotext-6.0.0-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:6fa6824488bbce3b683b66837ac7699d21120a31014ef9c5b925bc8463897dd2"},
+    {file = "plotext-6.0.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:02cfe2c299da65303a1c2c1a17559b53838d84c2e0f92259f40fa282cf3c9013"},
+    {file = "plotext-6.0.0-py3-none-win_amd64.whl", hash = "sha256:2742ae506c405118c2ece8b45fe01482b13586f769b682e5c98f32793cfb6427"},
+    {file = "plotext-6.0.0.tar.gz", hash = "sha256:d49792c1881a15dfe27a23b1d659660d3962f9e1afaac21250eccc3bbd47581f"},
 ]
 
 [package.extras]
-completion = ["shtab"]
 image = ["pillow (>=8.4)"]
-video = ["ffpyplayer (>=4.3.5)", "opencv-python (>=4.5.5)", "pafy (>=0.5.5)", "pillow (>=8.4)", "youtube-dl (==2020.12.2)"]
+video = ["ffpyplayer (>=4.3.5)", "pillow (>=8.4)", "yt-dlp (>=2024.1.1)"]
 
 [[package]]
 name = "pluggy"
