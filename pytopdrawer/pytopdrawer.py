@@ -20,8 +20,21 @@ def main():
     parser.add_argument(
         "-t", "--text", action="store_true", help="print plots as text to stdout"
     )
+    parser.add_argument(
+        "-c",
+        "--calibration",
+        action="store_true",
+        help="add one plot per dimension through the nodes (i/nbin, C_i), "
+        "C_i being the cumulative of the previous iteration at bin i",
+        default=False
+    )
     args = parser.parse_args()
     tops = pytopdrawer.read(args.topfile, True, False)
+    if args.calibration:
+        tops += [top.calibration() for top in tops]
+    for top in tops:
+        if top.dim() is not None:
+            top.title.text = "cumulative " + " ".join(top.title.text.split())
     # Text first so we get fast results
     if args.text:
         for top in tops:
@@ -37,21 +50,13 @@ def main():
             rows = N
             cols = 1
         fig, axes = plt.subplots(
-            rows, cols, figsize=(cols * args.size, rows * args.size)
+            rows, cols, figsize=(cols * args.size, rows * args.size), squeeze=False
         )
-        ti = 0
-        for i in range(rows):
-            for j in range(cols):
-                if rows == 1:
-                    a = axes[j]
-                elif cols == 1:
-                    a = axes[i]
-                else:
-                    a = axes[i][j]
-                tops[ti].plot(axes=a)
-                ti += 1
-                if ti == N:
-                    break
+        axes = axes.flatten()
+        for ti, top in enumerate(tops):
+            top.plot(axes=axes[ti])
+        for a in axes[N:]:
+            a.set_visible(False)
         if args.output is not None:
             fig.savefig(args.output)
         if not args.noshow:
