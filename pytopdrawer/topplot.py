@@ -93,35 +93,26 @@ class TopPlot:
         self.plot(init=init, **kwargs)
         plot.show()
 
-    def terminal_plot(self, title=None, width=None, height=None):
+    def _terminal_figure(self, title=None, width=None, height=None):
         title = title if title is not None else self.title.text
-        plt.clear_data()
-        plt.plot(
-            self.xdata().tolist(),
-            self.ydata().tolist(),
-            marker="dot",
-            lines=False,
+        figure = plt.figure
+        figure.clear()
+        signal = figure.signal(
+            self.xdata().tolist(), self.ydata().tolist(), marker="dot"
         )
+        figure.draw(signal)
         if title:
-            plt.title(title)
+            figure.title(title)
         if width is not None or height is not None:
-            plt.plotsize(width, height)
-        plt.show()
+            figure.plot_size(width, height)
+        return figure
+
+    def terminal_plot(self, title=None, width=None, height=None):
+        self._terminal_figure(title=title, width=width, height=height).show()
 
     def terminal_plot_str(self, title=None, width=None, height=None):
-        title = title if title is not None else self.title.text
-        plt.clear_data()
-        plt.plot(
-            self.xdata().tolist(),
-            self.ydata().tolist(),
-            marker="dot",
-            lines=False,
-        )
-        if title:
-            plt.title(title)
-        if width is not None or height is not None:
-            plt.plotsize(width, height)
-        return plt.build()
+        matrix = self._terminal_figure(title=title, width=width, height=height).build()
+        return matrix.string()
 
     def __str__(self):
         return self.terminal_plot_str()
