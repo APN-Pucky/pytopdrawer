@@ -3,13 +3,6 @@ import plotext as plt
 from smpl import plot
 
 
-def _clear_plotext():
-    for name in ("clear_figure", "clf", "clear_data"):
-        if clear := getattr(plt, name, None):
-            clear()
-            return
-
-
 class Title:
     def __init__(self, position="top", text=""):
         self.position = position
@@ -102,8 +95,13 @@ class TopPlot:
 
     def terminal_plot(self, title=None, width=None, height=None):
         title = title if title is not None else self.title.text
-        _clear_plotext()
-        plt.scatter(self.xdata().tolist(), self.ydata().tolist())
+        plt.clear_figure()
+        plt.plot(
+            self.xdata().tolist(),
+            self.ydata().tolist(),
+            marker="dot",
+            lines=False,
+        )
         if title:
             plt.title(title)
         if width is not None or height is not None:
@@ -112,8 +110,13 @@ class TopPlot:
 
     def terminal_plot_str(self, title=None, width=None, height=None):
         title = title if title is not None else self.title.text
-        _clear_plotext()
-        plt.scatter(self.xdata().tolist(), self.ydata().tolist())
+        plt.clear_figure()
+        plt.plot(
+            self.xdata().tolist(),
+            self.ydata().tolist(),
+            marker="dot",
+            lines=False,
+        )
         if title:
             plt.title(title)
         if width is not None or height is not None:

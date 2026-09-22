@@ -11,7 +11,7 @@ license = "GPL-3.0-or-later"
 python = "^3.10"
 smpl = "*"
 uncertainties = "*"
-plotext = "*"
+plotext = ">=6.0.0"
 
 [tool.poetry.scripts]
 pytopdrawer = "pytopdrawer.pytopdrawer:main"

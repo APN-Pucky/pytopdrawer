@@ -1,14 +1,12 @@
 import pytopdrawer
-from pytopdrawer import topplot
 
 
-def test_clear_plotext(monkeypatch):
-    clear_names = ("clear_figure", "clf", "clear_data")
-    for clear_name in clear_names:
-        for name in clear_names:
-            monkeypatch.setattr(topplot.plt, name, None, raising=False)
-        monkeypatch.setattr(topplot.plt, clear_name, lambda: None)
-        topplot._clear_plotext()
+def test_terminal_plot():
+    pytopdrawer.TopPlot(data=[[0, 0], [1, 1]]).terminal_plot()
+
+
+def test_terminal_plot_str():
+    pytopdrawer.TopPlot(data=[[0, 0], [1, 1]]).terminal_plot_str()
 
 
 def test_read():
