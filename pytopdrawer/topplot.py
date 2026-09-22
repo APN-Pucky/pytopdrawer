@@ -1,3 +1,4 @@
+import re
 import numpy as np
 import plotext as plt
 from smpl import plot
@@ -14,11 +15,12 @@ class Limits:
 		self.ymin = ymin
 		self.ymax = ymax
 class Join:
-	def __init__(self,x1,y1,x2,y2):
+	def __init__(self,x1,y1,x2,y2,linewidth=None):
 		self.x1=x1
 		self.y1=y1
 		self.x2=x2
 		self.y2=y2
+		self.linewidth=linewidth
 	def as_arrays(self):
 		return [self.x1,self.x2],[self.y1,self.y2]
 
@@ -46,12 +48,30 @@ class TopPlot:
 	def ydata(self):
 		return self.data[:,1]
 
-	def grid(self, gridcolor="k", gridalpha=0.3, gridlinewidth=0.5, axes=None, **kwargs):
+	def dim(self):
+		"""Returns the dimension i of a POWHEG grid plot titled 'dim= i', else None."""
+		m = re.fullmatch(r'\s*dim=\s*(\d+)\s*', self.title.text)
+		return int(m.group(1)) if m else None
+
+	def calibration(self):
+		"""
+		Returns a TopPlot through the nodes (i/nbin, C_i) with C_i being the cumulative
+		of the previous iteration at bin i. A converged grid lies on the diagonal.
+		"""
+		c = self.ydata()
+		if self.xdata()[0] != 0:
+			c = np.concatenate(([0], c))
+		nbin = len(c) - 1
+		x = np.arange(nbin + 1) / nbin
+		title = Title(self.title.position, "calibration " + " ".join(self.title.text.split()))
+		return TopPlot(limits=Limits(0, 1, 0, 1), title=title, data=np.column_stack((x, c)), joins=[Join(0, 0, 1, 1, linewidth=2)])
+
+	def grid(self,gridcolor="k", gridalpha=0.3, gridlinewidth=0.5, axes=None, **kwargs):
 		if axes is None:
 			axes = plot.gca()
 		for join in self.joins:
 			# print(join.x1,join.x2)
-			axes.plot(*join.as_arrays(),color=gridcolor,alpha=gridalpha,linewidth=gridlinewidth)
+			axes.plot(*join.as_arrays(),color=gridcolor,alpha=gridalpha,linewidth=join.linewidth if join.linewidth is not None else gridlinewidth)
 	
 	def auto(self, fmt="-", grid=False, title=None, **kwargs):
 		title = title if title is not None else self.title.text
