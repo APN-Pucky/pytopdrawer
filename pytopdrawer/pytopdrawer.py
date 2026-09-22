@@ -37,21 +37,13 @@ def main():
             rows = N
             cols = 1
         fig, axes = plt.subplots(
-            rows, cols, figsize=(cols * args.size, rows * args.size)
+            rows, cols, figsize=(cols * args.size, rows * args.size), squeeze=False
         )
-        ti = 0
-        for i in range(rows):
-            for j in range(cols):
-                if rows == 1:
-                    a = axes[j]
-                elif cols == 1:
-                    a = axes[i]
-                else:
-                    a = axes[i][j]
-                tops[ti].plot(axes=a)
-                ti += 1
-                if ti == N:
-                    break
+        axes = axes.flatten()
+        for ti, top in enumerate(tops):
+            top.plot(axes=axes[ti])
+        for a in axes[N:]:
+            a.set_visible(False)
         if args.output is not None:
             fig.savefig(args.output)
         if not args.noshow:
