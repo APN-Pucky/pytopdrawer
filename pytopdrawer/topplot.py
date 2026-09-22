@@ -95,7 +95,7 @@ class TopPlot:
 
     def terminal_plot(self, title=None, width=None, height=None):
         title = title if title is not None else self.title.text
-        plt.clear_figure()
+        plt.clear_data()
         plt.plot(
             self.xdata().tolist(),
             self.ydata().tolist(),
@@ -110,7 +110,7 @@ class TopPlot:
 
     def terminal_plot_str(self, title=None, width=None, height=None):
         title = title if title is not None else self.title.text
-        plt.clear_figure()
+        plt.clear_data()
         plt.plot(
             self.xdata().tolist(),
             self.ydata().tolist(),
